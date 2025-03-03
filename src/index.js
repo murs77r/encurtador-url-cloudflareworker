@@ -23,7 +23,7 @@ export default {
             return new Response("Parâmetros inválidos", { status: 400 });
           }
   
-          await env.URLS.put(short, long);
+          await env.URLs.put(short, long);
           return new Response(`URL encurtada: /go/${short}`, { status: 201 });
         } catch (error) {
           return new Response(error, { status: 400 });
