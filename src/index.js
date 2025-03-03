@@ -26,7 +26,7 @@ export default {
           await env.URLS.put(short, long);
           return new Response(`URL encurtada: /go/${short}`, { status: 201 });
         } catch (error) {
-          return new Response("Erro ao processar a requisição", { status: 400 });
+          return new Response(error, { status: 400 });
         }
       }
   
