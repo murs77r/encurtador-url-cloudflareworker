@@ -29,14 +29,14 @@ export default {
 
         if (metodo === "adicao") {
           await env.URLs.put(short, long);
-          return new Response(`URL encurtada: /go/${short}`, { status: 201 });
+          return new Response(`https://url.class-one.com.br/go/${short}`, { status: 201 });
         } else if (metodo === "edicao") {
           const existingURL = await env.URLs.get(short);
           if (!existingURL) {
             return new Response(`URL encurtada /go/${short} não encontrada para edição.`, { status: 404 });
           }
-          await env.URLs.put(short, long); 
-          return new Response(`URL encurtada /go/${short} editada com sucesso.`, { status: 200 });
+          await env.URLs.put(short, long);
+          return new Response(`https://url.class-one.com.br/go/${short}`, { status: 200 });
         } else if (metodo === "exclusao") {
           const existingURL = await env.URLs.get(short);
           if (!existingURL) {
@@ -48,7 +48,7 @@ export default {
 
 
       } catch (error) {
-        return new Response("ERRO:" + error.message, { status: 400 });
+        return new Response(error.message, { status: 400 });
       }
     }
 
