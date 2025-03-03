@@ -6,7 +6,13 @@ export default {
       const key = url.pathname.replace("/go/", "");
       const longURL = await env.URLs.get(key);
       if (longURL) {
-        return Response.redirect(longURL, 301);
+        return new Response.redirect(longURL, 301, {
+          headers: {
+            "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "0",
+          },
+        });
       }
       return new Response("URL não encontrada", { status: 404 });
     }
