@@ -5,7 +5,7 @@ Este Cloudflare Worker implementa um encurtador de URLs completo com funcionalid
 ## ✨ Funcionalidades
 
 *   **Redirecionamento (GET):**
-    *   URLs no formato `/go/:id` são redirecionadas (código 301) para a URL longa correspondente.
+    *   URLs no formato `/go/:id` são redirecionadas (código 302) para a URL longa correspondente.
     *   Define cabeçalhos `Cache-Control`, `Pragma` e `Expires` para evitar o cache do redirecionamento.
     *   Retorna um erro 404 se a URL curta não for encontrada.
 *   **Gerenciamento de URLs (POST):**
@@ -14,7 +14,7 @@ Este Cloudflare Worker implementa um encurtador de URLs completo com funcionalid
     *   Parâmetro `metodo`: Especifica a operação a ser realizada (`"adicao"`, `"edicao"`, `"exclusao"`).
     *   Retorna erros apropriados para:
         *   Acesso negado (token incorreto).
-        *   Parâmetros inválidos (faltando `metodo`, `short` ou `long`).
+        *   Parâmetros inválidos (faltando `metodo`, `short`, `long` ou `token`).
         *   Método inválido.
         *   URL curta não encontrada (para edição e exclusão).
 *   **Validação Robusta:**
